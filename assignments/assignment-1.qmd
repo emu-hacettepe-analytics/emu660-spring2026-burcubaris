@@ -88,7 +88,7 @@ apply(mtcars, 2, compute_stats)
 ```
 
 ```{r}
-install.packages("dslabs")
+
 library(dslabs)
 
 data(polls_us_election_2016)
