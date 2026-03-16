@@ -2,14 +2,171 @@
 title: "Assignment 1"
 ---
 
-# Assignment 1
-
-```{r}
-1 + 1
-```
-
 My first assignment has two parts.
 
-## (a)
+## (a) A brief summary about “Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu & Erdi Daşdemir” video:
 
-## (b)
+Our lecturer Dr. Erdi Daşdemir’s guest Baykal Hafızoğlu talks about operation research (OR) and data science. Defining himself as an OR and Optimization Scientist, Mr. Hafızoğlu explains that his core mission involves the formulation and resolution of complex mathematical models to address real-world challenges.
+
+Mr. Hafızoğlu notes that the traditional definition of OR has changed a lot over the past few years. He argues that while it used to be related to optimization and statistics, it is now more closely associated with artificial intelligence and machine learning. For this reason, Mr. Hafızoğlu prefers to refer OR as an “analytics”. He categorizes analytics into four topic and shows these topics as a graphic: Descriptive, Diagnostic, Predictive  and Prescriptive analytics.
+
+Later in his speech, he talks about his own experiences. First, he says, “All projects begin with a clear problem definition.” He explains that the problem definition must be clear and concise, even when dealing with the simplest of matters. This is the most important thing.
+
+Mr. Hafızoğlu notes that one of the most important things is to truly understand the user. An early-stage prototype should be presented to the customer without delay, and feedback should be gathered. The user should not struggle to understand the user interface. It is really important that users understand and adopt the model they will be using. This is because users do not want to use models they do not understand. Therefore, we must be able to explain the analytical model we have created.
+
+Finally, he answers the questions of undergraduate students to satisfy their curiosity.
+
+## (b) Open-ended and Multiple-Choice Questions
+
+b.1. Open-ended Question
+
+Based on the value and complexity graph shown at the 26:45 -minute mark of the video, please explain how analytics evolves from descriptive analytics to prescriptive analytics. What changes in terms of the type of questions answered and the value created for decision making?
+
+\*\* Answer \*\*
+
+As analytics progresses from descriptive to prescriptive analytics, both the complexity of methods and the value generated for decision making increase. Descriptive analytics focuses on understanding what happened in the past using techniques such as data visualization and time series analysis. Diagnostic analytics goes further by analyzing why something happened. Predictive analytics uses methods like regression, simulation, and machine learning to estimate what is likely to happen in the future. Finally, prescriptive analytics recommends the best actions by using optimization, heuristics, and mathematical modeling to support decision making.
+
+b.2. Multiple-Choice Question
+
+According to the figure, what is the main difference between predictive analytics and prescriptive analytics?
+
+A\) Predictive analytics focuses on describing past data, while prescriptive analytics focuses on visualizing data.
+
+B\) Predictive analytics estimates what is likely to happen, while prescriptive analytics recommends what actions should be taken.
+
+C\) Predictive analytics only uses machine learning, while prescriptive analytics only uses statistics.
+
+D\) Predictive analytics focuses on historical reports, while prescriptive analytics focuses only on data storage.
+
+**Correct Answer:** B
+
+## (c) Statistical Summaries with Custom Functions
+
+```{r}
+data(mtcars)
+head(mtcars)
+```
+
+```{r}
+compute_stats <- function(x) {
+  
+  stats <- list(
+    mean = mean(x),
+    median = median(x),
+    variance = var(x),
+    IQR = IQR(x),
+    min = min(x),
+    max = max(x)
+  )
+  
+  return(stats)
+}
+```
+
+```{r}
+
+for(col in names(mtcars)) {
+  
+  cat("Column:", col, "\n")
+  
+  result <- compute_stats(mtcars[[col]])
+  
+  print(result)
+  
+  cat("\n")
+}
+
+```
+
+```{r}
+sapply(mtcars, compute_stats)
+```
+
+```{r}
+apply(mtcars, 2, compute_stats)
+
+```
+
+```{r}
+install.packages("dslabs")
+library(dslabs)
+
+data(polls_us_election_2016)
+
+data <- polls_us_election_2016
+head(data)
+```
+
+```{r}
+my_first <- "Burcu"
+my_birth_year <- 1990
+
+```
+
+```{r}
+k <- (nchar(my_first) + my_birth_year) %% 15 + 8
+k
+```
+
+```{r}
+if (k %% 2 == 0) {
+  head(data, k)
+} else {
+  tail(data, k)
+}
+```
+
+```{r}
+sum(is.na(data))
+```
+
+```{r}
+na_counts <- sort(colSums(is.na(data)), decreasing = TRUE)
+
+head(na_counts, 8)
+```
+
+```{r}
+new_data <- data
+```
+
+```{r}
+num_cols <- sapply(new_data, is.numeric)
+
+new_data[num_cols] <- lapply(new_data[num_cols], function(x) {
+  
+  x[is.na(x)] <- my_birth_year + k
+  
+  x
+})
+
+```
+
+```{r}
+char_cols <- sapply(new_data, function(x) is.character(x) | is.factor(x))
+
+new_data[char_cols] <- lapply(new_data[char_cols], function(x) {
+  
+  x[is.na(x)] <- paste0(my_first, "_", k)
+  
+  x
+})
+
+```
+
+```{r}
+
+if (k %% 2 == 0) {
+  head(new_data, k)
+} else {
+  tail(new_data, k)
+}
+```
+
+```{r}
+sum(is.na(new_data))
+```
+
+```{r}
+anyNA(new_data)
+```

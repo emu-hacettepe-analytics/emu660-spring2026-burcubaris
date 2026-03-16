@@ -3,38 +3,44 @@ title: "About Me"
 sidebar: false 
 ---
 
-![](assets/images/vesikalik.jpeg){fig-align="center"}
+![](images/clipboard-3780803310.jpeg){width="140"}
 
 # Education
 
--   B.S., ................................., ....................................University, Turkey, 20xx - 20xx.
--   M.S., Industrial Engineering, Hacettepe University, Turkey, 20xx - ongoing.
--   Ph.D.., Industrial Engineering, Hacettepe University, Turkey, 20xx - ongoing.
+-   B.S., Dokuz Eylül University, Turkey, 2008-2013
+
+-   M.S., Industrial Engineering, Hacettepe University, Turkey, 2025 - ongoing.
 
 # Work Experience
 
 ## Employements
 
-1.  Firm xxx, position xx, year xxx
+1.  ASELSAN, Project Engineer, 2020-Present
 
-2.  Firm yyy, position yyy, year yyy
+2.  Eczacıbaşı, Material Planning Engineer, 2019-2020
+
+3.  Ford Otosan, Production Planning Engineer, 2013-2019
 
 ## Internships
 
-1.  Firm aaa, position xx, year xxx
+1.  Vestel Elektronik, Part Time Project Engineer, 2012-2013
 
-2.  Firm bbb, position yyy, year yyy
+2.  Hayes Lemmerz, Intern, 2011
 
 # Projects
 
-1.  TUBİTAK 1001..........................
-
-# Publications
-
-1.  Dasdemir, E., Batta, R., Koksalan, M., Tezcaner Ozturk, D. (2022) “UAV Routing for Reconnaissance Mission: A Multi-Objective Orienteering Problem with Time-Dependent Prizes and Multiple Connections”, Computers & Operations Research, 145: 105882.
+1.  3700 SK2 Radio Family: An In-house R&D Project (Aselsan-2024)
+2.  Decreasing Paint Shop Inefficiencies via Vehicle Sequencing (Ford Otosan-2018)
 
 # Competencies
 
-R, Quarto, Git, Python
+Microsoft Office, SAP, Minitab, Primavera, R, Quarto, Git
 
 # Hobbies
+
+Tennis 🎾, painting 🎨, travelling 🌄
+
+# CV
+
+[Burcu Barış CV](docs/Burcu_Baris_CV.pdf)
+

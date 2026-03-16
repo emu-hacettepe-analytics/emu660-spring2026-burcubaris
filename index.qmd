@@ -2,8 +2,11 @@
 title: "Welcome to My Analytics Lab"
 ---
 
-Hello!! My name is xxx xxxx.
+*Hello! :) My name is Burcu BARIŞ. I am a project engineer at ASELSAN working on mission critical communication systems. I'm pursuing a master's degree in Industrial Engineering and I am currently interested in data analytics and decision systems.*
 
-This is my personal webpage.
+*This is my personal webpage.*
 
-Please stay tuned to follow my works on data analytics, blog posts, and more.
+*Please stay tuned to follow my works on data analytics, blog posts, and more.*
+
+\
+\
