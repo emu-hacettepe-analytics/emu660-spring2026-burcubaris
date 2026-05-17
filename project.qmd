@@ -209,20 +209,25 @@ ggplot(data = grafik_verisi, aes(x = yil, y = goc_miktari)) +
 The graphic shows the changes in total migration amounts over the years for Ankara province.
 
 ```{r}
+library(ggplot2)
+
+# 1. Ankara verisini filtreliyoruz
 grafik_verisi <- VerilenGoc[VerilenGoc[, 2] == "Ankara", ]
-print(grafik_verisi)
-head(grafik_verisi)
 
-yil <- factor(grafik_verisi[[1]], levels = sort(unique(grafik_verisi[[1]]), decreasing = TRUE))
-goc_miktari  <- as.numeric(grafik_verisi[[3]])/1000  
+# 2. Yeni degiskenleri tablonun disinda olusturmak yerine, 
+# dogrudan tabloya yeni sutun olarak ekliyoruz (ggplot'un en sevdigi yontem)
+grafik_verisi$yil_farkli <- factor(grafik_verisi[[1]], levels = sort(unique(grafik_verisi[[1]]), decreasing = TRUE))
+grafik_verisi$goc_bin <- as.numeric(grafik_verisi[[3]]) / 1000
 
-ggplot(data = grafik_verisi, aes(x = yil, y = goc_miktari)) +
+# 3. Grafigi cizdiriyoruz (Artik eksenler tablonun icindeki yeni sutunlari goruyor)
+ggplot(data = grafik_verisi, aes(x = yil_farkli, y = goc_bin, group = 1)) +
   geom_col(fill = "steelblue", alpha = 0.7) + 
-  geom_line(color = "black", size = 2) + 
+  geom_line(color = "black", linewidth = 1.5) + # size yerine yenilenen linewidth kullanildi
   geom_point(color = "darkred", size = 3) +
-  geom_text(aes(label = round(goc_miktari, 1)), vjust = -0.5, size = 3.5) +
+  geom_text(aes(label = round(goc_bin, 1)), vjust = -0.5, size = 3.5) +
+  theme_minimal() + # Daha temiz bir gorunum ekledik
   labs(
-    title = "Ankara icin Yillara Gore Toplam Verilen Goc Miktari",
+    title = "Ankara Icin Yillara Gore Toplam Verilen Goc Miktari",
     x = "Yil",
     y = "Goc Miktari (x1.000)"
   )
