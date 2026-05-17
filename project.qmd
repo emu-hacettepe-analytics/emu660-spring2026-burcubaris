@@ -55,15 +55,17 @@ The datasets used in the project are:
 
 4.\[Net migration rate for provinces according to reasons for migration\] Calculated as "Migration Outgoing - Migration Incoming"
 
-3.[Life Index Rankings and Index Values by Province](https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=5IS1p1Z%2Btvlc0qxFhZzbC9g6NOWXugwdILs8mAMegx5w5sIpUqxydG6%2B5%2FWn1HGIIXJVqd%2Fwn%2B78duD2fsK84VEREA5Sn4QY5oeOWRHZRvVYOaDudiOCwll9hFpmp5W)
+5.[Life Index Rankings and Index Values by Province](https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=5IS1p1Z%2Btvlc0qxFhZzbC9g6NOWXugwdILs8mAMegx5w5sIpUqxydG6%2B5%2FWn1HGIIXJVqd%2Fwn%2B78duD2fsK84VEREA5Sn4QY5oeOWRHZRvVYOaDudiOCwll9hFpmp5W)
+
+In this study, the five datasets mentioned above were used, graphs were plotted, and the results were thoroughly analyzed.
 
 ## 2.2 General Information About Data
 
-Our dataset tracks migration metrics across all 81 provinces of TC\<rkiye from 2018 to 2024. It combines raw inbound/outbound migration figures with detailed columns explaining 12 different reasons for migration, cross-references them with the Turkish Statistical Institute's (TCD0K) comprehensive Life Index scores, and shows the relationships between them.
+Our dataset tracks migration metrics across all 81 provinces of Turkiye from 2018 to 2024. It combines raw inbound/outbound migration figures with detailed columns explaining 12 different reasons for migration, cross-references them with the Turkish Statistical Institute's (TUIK) comprehensive Life Index scores, and shows the relationships between them.
 
 ## 2.3 Reason of Choice
 
-We chose this data because migration cannot be explained solely by economic factors. By combining net migration metrics with the multidimensional Life Index (which assesses health, education, security, and environment), we can reveal the relationship between internal migration in TC\<rkiye and life indices.
+We chose this data because migration cannot be explained solely by economic factors. By combining net migration metrics with the multidimensional Life Index (which assesses health, education, security, and environment), we can reveal the relationship between internal migration in Turkiye and life indices.
 
 ## 2.4 Preprocessing
 
@@ -80,7 +82,6 @@ write("TMPDIR = C:\\", file = file.path(Sys.getenv("HOME"), ".Renviron"), append
 
 # 2. Şimdi paketi tekrar yüklemeyi dene
 #install.packages("writexl")
-
 #install.packages("ggrepel")
 library(ggplot2)
 library(dplyr)
@@ -118,6 +119,44 @@ for (i in 3:toplam_sutun) {
 write_xlsx(fark_df, "C:/emu660-spring2026-burcubaris/NetGoc.xlsx")
 print(VerilenGoc[, 3:toplam_sutun])
 ```
+Bu tablodan illerin en büyük göç verme nedeninin eğitim olduğunu görebiliyoruz. Eğitimi ekonomik/iş istihdam olanakları takip etmektedir.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+# 1. Veriyi hazırla ve filtrele (Sütun ismi yerine indeks numarası kullanıyoruz)
+neden_verisi_2024 <- VerilenGoc %>%
+  # 1. sütun Yıl (2024) ve 2. sütun İl (Toplam-Total) olan satırı seçiyoruz
+  filter(.[[1]] == 2024 & .[[2]] == "Toplam-Total") %>%
+  # İlk 3 sabit sütunu (Yıl, İl, Toplam) indeks numaralarıyla tablodan çıkarıyoruz
+  select(-c(1, 2, 3)) %>% 
+  # Tabloyu ggplot'un anlayacağı uzun (long) formata çeviriyoruz
+  pivot_longer(cols = everything(), names_to = "Goc_Nedeni", values_to = "Kisi_Sayisi") %>%
+  mutate(Kisi_Sayisi_Bin = Kisi_Sayisi / 1000)
+
+# Sütun isimlerindeki o sorun çıkaran \r\n karakterlerini temizliyoruz
+neden_verisi_2024$Goc_Nedeni <- gsub("\\r\\n.*", "", neden_verisi_2024$Goc_Nedeni) 
+
+# 2. Grafiği Çiz (İller grafiğindeki sıkışma olmasın diye yazı boyutunu da ayarladık)
+ggplot(neden_verisi_2024, aes(x = Kisi_Sayisi_Bin, y = reorder(Goc_Nedeni, Kisi_Sayisi_Bin))) +
+  geom_col(fill = "forestgreen", alpha = 0.8) +
+  theme_minimal() +
+  labs(
+    title = "2024 Yili Goc Nedenleri",
+    x = "Kisi Sayısı (Bin Kisi)",
+    y = "Goc Etme Gerekcesi"
+  ) +
+  theme(
+    axis.text.y = element_text(size = 9), # Gerekçelerin yazı boyutu
+    plot.title = element_text(face = "bold", size = 12),
+    panel.grid.major.y = element_blank() # Yatay kalabalık çizgileri gizler
+  )
+```  
+  
+En güncel 2024 baz alırsak göç etmenin en büyük nedenlerinin aile fertlerinden birine bağımlı göç ile daha iyi yaşam koşulları ve eğitim olduğunu görürüz. 2024 yılı için en yüksek çıkan değer aslında bize Türkiye'de yaşayan toplumun aile odaklı olduğunu gösterir ki bu sürpriz değildir.İkinci olarak ise insanların daha iyi yaşam koşulları için yoğun bir şekilde yer değiştirdiğini görüyoruz.Üçüncü sırada çıkan eğitimde ise üniversite ve okul faktörünün yine Türkiye'de iç göçün temellerinden olmaya devam ettiğini görüyoruz.
+
 
 ### 2.4.2. Calculating net migration rate using population data of provinces and creating an Excel file.
 
@@ -162,6 +201,8 @@ ggplot(data = grafik_verisi, aes(x = yil, y = goc_miktari)) +
     y = "Goc Miktari (x1.000)"
   )
 ```
+
+2018-2024 yılları arasındaki göç hareketini inceleyecek olursak en düşük yılın 2020 pandemi senesinin olduğunu görüyoruz. O dönemde sokağa çıkma yasakları ve belirsizliğin hakim olması insanların yaşadıkları şehirden göç etmelerine engel olmuş olabilir diyebiliriz. En yüksek artışın ise 2023 yılında olduğunu görüyoruz ki Şubat 2023'te Kahramanmaraş depremi meydana gelmiş ve insanlar deprem riskinin az olduğu, daha güvenli şehirlere göç etmeye başlamışlardır. 2018 yılında da nispeten yüksek bir göç hareketi görüyoruz. O dönemde Türkiye'de ekonomik kriz ve enflasyon etkisiyle özellikle pahalı olan Ankara ve İstanbul gibi metropol şehirlerden daha küçük şehirlere göç hareketinin olduğunu söyleyebiliriz.
 
 ### 3.1.2. Changes in Total Migration Values by Year for Ankara Provience
 
@@ -309,6 +350,6 @@ print(grafik)
 
 The graph shows the
 
-# 4 Results
+# 4 Results and Key Takeaways
 
 The graph shows the
