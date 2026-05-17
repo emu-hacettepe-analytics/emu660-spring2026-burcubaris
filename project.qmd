@@ -117,7 +117,7 @@ for (i in 3:toplam_sutun) {
   fark_df[[i]] <- as.numeric(fark_df[[i]])
 }
 write_xlsx(fark_df, "C:/emu660-spring2026-burcubaris/NetGoc.xlsx")
-print(VerilenGoc[, 3:toplam_sutun])
+rmarkdown::paged_table(VerilenGoc[, 3:toplam_sutun])
 ```
 Bu tablodan illerin en büyük göç verme nedeninin eğitim olduğunu görebiliyoruz. Eğitimi ekonomik/iş istihdam olanakları takip etmektedir.
 
