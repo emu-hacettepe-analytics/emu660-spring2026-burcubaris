@@ -1,72 +1,112 @@
 ---
-title: "Project X"
+title: "Migration Dynamics and Quality of Life Index"
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Code"
+    toc: true             
+    toc-location: left  
+    theme: cosmo        
+    embed-resources: true
+  pdf:
+    colorlinks: true
+    papersize: a4
+    fontsize: 11pt
+    margin-left: 2cm
+    margin-right: 2cm
+    margin-top: 2cm
+    margin-bottom: 2cm
+    
+execute:
+  warning: false
+  message: false
 ---
 
 Welcome to our project page.
 
-Keep an eye on this space to stay updated with my project activities.
+*Team BU-R-SEL*
 
-(The titles below are provided as examples; please feel free to adjust them as necessary.)
+[Selin DÜZEN](https://emu-hacettepe-analytics.github.io/emu660-spring2026-Selindznn/project.html)
+
+[Burcu BARIŞ](https://emu-hacettepe-analytics.github.io/emu660-spring2026-burcubaris/project.html)
 
 # 1. Project Overview and Scope
 
-Göç, yalnızca bireylerin coğrafi yer değiştirmesi değil; ekonomik arayışların, sosyal imkanların ve yapısal kalitenin bir bölgedeki izdüşümüdür. Türkiye’de iller arasındaki gelişmişlik ve yaşam standartları farkı, iç göç hareketlerinin en birincil dinamiklerinden birini oluşturmaktadır.
-Bu projede, TÜİK verilerini kullanarak Türkiye'nin 81 ilinin Net Göç (Net Göç = Göç Veren - Göç Alan) rakamları ile İllerde Yaşam Endeksi (Yaşanabilirlik) göstergeleri arasındaki çok boyutlu ilişkiyi analitik yöntemlerle incelemeyi hedefliyoruz. Amacımız, insanların hangi yaşamsal faktörleri (ekonomi, eğitim, sağlık, çevre kalitesi, güvenlik vb.) nedeniyle mevcut şehirlerini terk ettiğini veya belirli şehirlere yöneldiğini veri analitiği ve istatistiksel modellerle ortaya koymaktır. Bu çalışma, bölgesel kalkınma politikaları ve kentsel planlama kararları için veri odaklı bir projeksiyon sunması açısından önemli bir karar destek mekanizması niteliğindedir diyebiliriz.
+Migration is not merely the geographical displacement of individuals; it is also a reflection of economic pursuits, social opportunities, and structural quality in a region. In Turkey, the difference in development and living standards between provinces constitutes one of the primary dynamics of internal migration movements.
 
-Projenin Temel Amaçları
-Göç Profillerinin Çıkarılması: Türkiye'deki "Net Göç Şampiyonları" (en çok net göç alan) ve "Göç Kaynakları" (en çok net göç veren) illeri tespit etmek ve bunları coğrafi olarak haritalandırmak.
-Yaşanabilirlik Boyutlarının Etkisi: Yaşam endeksini oluşturan alt kırılımlardan (Gelir ve Servet, Sağlık, Eğitim, Çevre, Güvenlik vb.) elde edilen genel endeksin göç kararı üzerindeki etkisini araştırmak.
+In this project, using TUIK (Turkish Statistical Institute) data, we aim to examine the multidimensional relationship between Net Migration (Net Migration = Migrant Receiving - Migrant Giving) figures for all 81 provinces of Turkiye and the Livability Index indicators in these provinces using analytical methods. Our goal is to reveal, through data analytics and statistical models, which vital factors (economy, education, health, environmental quality, security, etc.) cause people to leave their current cities or move to specific cities.
+
+*Creating Migration Profiles:* To identify the "Net Migration Champions" (provinces receiving the most net migrants) and "Migration Sources" (provinces giving the most net migrants) in Turkiye and to map them geographically.
+
+*The Impact of Livability Dimensions:* To statistically demonstrate which of the sub-components of the livability index (Income and Wealth, Health, Education, Environment, Security, etc.) are more dominant "push" or "pull" forces influencing migration decisions.
 
 # 2. Data
 
-#veri seti, veri kümenizi açıklayın. Herhangi bir tam analiz yapmanız veya sonuç çıkarmanız gerekmemekle birlikte, verilere kapsamlı bir genel bakış sunmayı hedefleyin—sütunların ne anlama geldiğini, değerlerin nasıl dağıldığını açıklayın ve potansiyel analizler hakkında fikirlerinizi paylaşın. Özlü tutun, bazı grafikler ekleyebilirsiniz.
-
-6.  
-
-1. İllerin yıllara sari popülasyon değeri
-2. Göç etme nedenlerine göre illerin aldığı göç miktarı
-3. Göç etme nedenlerine göre illerin verdiği göç miktarı
-4. Göç etme nedenlerine göre illerin net göç miktarı
-
 ## 2.1 Data Source
 
-xxxxxx
+The datasets used in the project are:
+
+1.[Population size of the provinces](https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=btt%2FI0Npd%2BLvtOvCSZRIUZxbvXE3lIAf5bE6X3CdLQJxPknvezk%2BE6i3Md3GTPYHYMhzGdG2vbYkzOXomic6rY8F%2FyL8NGud1ChYCxoEgy5FkIT%2BMezMLoMVyKJUHwSgAQ%2BDeuZaUgEdXmyanOwSEQ%3D%3D)
+
+2.[Migration received by provinces according to the reason for migration](https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=%2FMyiBh3DmS%2Bv%2BBjCf9%2BzPq%2B96lw8HZTF50uTl9jqBks%2BK5WE6sQNt%2Fqka0J5%2BImWGTGxKxiPcrz7kNG6I3rKkrLi%2B8mZkMkz9reke8%2BHd%2Fo%3D)
+
+3.[Migration rates by provinces according to the reason for migration](https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=%2FMyiBh3DmS%2Bv%2BBjCf9%2BzPq%2B96lw8HZTF50uTl9jqBks%2BK5WE6sQNt%2Fqka0J5%2BImWGTGxKxiPcrz7kNG6I3rKkrLi%2B8mZkMkz9reke8%2BHd%2Fo%3D)
+
+4.\[Net migration rate for provinces according to reasons for migration\] Calculated as "Migration Outgoing - Migration Incoming"
+
+3.[Life Index Rankings and Index Values by Province](https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=5IS1p1Z%2Btvlc0qxFhZzbC9g6NOWXugwdILs8mAMegx5w5sIpUqxydG6%2B5%2FWn1HGIIXJVqd%2Fwn%2B78duD2fsK84VEREA5Sn4QY5oeOWRHZRvVYOaDudiOCwll9hFpmp5W)
 
 ## 2.2 General Information About Data
 
-xxxxxx
+Our dataset tracks migration metrics across all 81 provinces of TC\<rkiye from 2018 to 2024. It combines raw inbound/outbound migration figures with detailed columns explaining 12 different reasons for migration, cross-references them with the Turkish Statistical Institute's (TCD0K) comprehensive Life Index scores, and shows the relationships between them.
 
 ## 2.3 Reason of Choice
 
-xxxxxx
+We chose this data because migration cannot be explained solely by economic factors. By combining net migration metrics with the multidimensional Life Index (which assesses health, education, security, and environment), we can reveal the relationship between internal migration in TC\<rkiye and life indices.
 
 ## 2.4 Preprocessing
 
-#Farklı excel verilerinde yer alan İllerin aldığı ve Verdiği Göç Değerlerinden Net Göç Hesaplanması ve verilerdeki char formatında yazılan boşluklu değerlerin numaric değerler olarak güncellenmesi işlemleri uygulanmıştır.
+The net migration values are calculated using migration data received and given by provinces in different Excel spreadsheets and the char formatted values containing spaces in the data were updated to numeric values.
 
+```{r}
 #install.packages("ggplot2") 
-#install.packages("dplyr")  
+#install.packages("dplyr")   
+#install.packages("openxlsx")
 #install.packages("readxl")
+
+# 1. R'ın geçici işlemler için C diskinin altında temiz bir klasör kullanmasını sağlıyoruz
+write("TMPDIR = C:\\", file = file.path(Sys.getenv("HOME"), ".Renviron"), append = TRUE)
+
+# 2. Şimdi paketi tekrar yüklemeyi dene
 #install.packages("writexl")
-#install.packages("forcats")
-#install.packages("tidyr")
-#install.packages("tidyverse")
-library(tidyverse)
+
+#install.packages("ggrepel")
+library(ggplot2)
+library(dplyr)
 library(readxl) 
 library(writexl) 
+library(stringr)
+library(forcats)
+library(tidyr)
+library(openxlsx)
+library(ggplot2)
+library(readxl)
+library(dplyr)
+library(ggrepel)
+```
 
+### 2.4.1. Calculating net migration values and creating a separate Excel file and checking and correcting numerical values.
 
-
-# Net göç bilgisi hesaplama ve excel dosyası oluşturma
-
-VerilenGoc <- read_excel("C:/Users/Public/Documents/my_repository_emu660/emu660-spring2026-burcubaris/VerilenGoc.xlsx", col_names = TRUE)
-AlinanGoc  <- read_excel("C:/Users/Public/Documents/my_repository_emu660/emu660-spring2026-burcubaris/AlinanGoc.xlsx", col_names = TRUE)
+```{r}
+VerilenGoc <- read_excel("C:/emu660-spring2026-burcubaris/VerilenGoc.xlsx", col_names = TRUE)
+AlinanGoc  <- read_excel("C:/emu660-spring2026-burcubaris/AlinanGoc.xlsx", col_names = TRUE)
 toplam_sutun <- ncol(VerilenGoc)
 fark_df <- VerilenGoc 
 for (i in 3:toplam_sutun) {
   v_clean <- as.character(VerilenGoc[[i]])
-  v_clean <- str_replace_all(v_clean, "\\s", "") # Tüm boşlukları siler 
-  VerilenGoc[[i]] <- as.numeric(v_clean)         # R içinde Double formatına zorla
+  v_clean <- str_replace_all(v_clean, "\\s", "") 
+  VerilenGoc[[i]] <- as.numeric(v_clean)        
   a_clean <- as.character(AlinanGoc[[i]])
   a_clean <- str_replace_all(a_clean, "\\s", "")    
   AlinanGoc[[i]] <- as.numeric(a_clean)
@@ -75,17 +115,35 @@ fark_df[, 3:toplam_sutun] <- VerilenGoc[, 3:toplam_sutun] - AlinanGoc[, 3:toplam
 for (i in 3:toplam_sutun) {
   fark_df[[i]] <- as.numeric(fark_df[[i]])
 }
-write_xlsx(fark_df, "C:/Users/Public/Documents/my_repository_emu660/emu660-spring2026-burcubaris/NetGoc.xlsx")
-
+write_xlsx(fark_df, "C:/emu660-spring2026-burcubaris/NetGoc.xlsx")
 print(VerilenGoc[, 3:toplam_sutun])
+```
+
+### 2.4.2. Calculating net migration rate using population data of provinces and creating an Excel file.
+
+```{r}
+kaynak_yolu <- "C:/emu660-spring2026-burcubaris/NetGoc.xlsx"
+hedef_yolu  <- "C:/emu660-spring2026-burcubaris/IlNufuslarii.xlsx"
+
+df_kaynak <- read_excel(kaynak_yolu, col_names = TRUE)
+
+NetGocVerisi <- df_kaynak[1:82, 3, drop = TRUE] 
+wb <- loadWorkbook(hedef_yolu)
+writeData(wb, sheet = 1, x = "Net GC6C'", startCol = 3, startRow = 1, colNames = FALSE)
+writeData(wb, sheet = 1, x = NetGocVerisi, startCol = 3, startRow = 2, colNames = FALSE)
+
+saveWorkbook(wb, hedef_yolu, overwrite = TRUE)
+```
 
 # 3. Analysis
 
-xxxxxx
-
 ## 3.1 Exploratory Data Analysis
 
-# Yıllara göre Toplam Verilen Göç Miktarı Değişimi
+### 3.1.1. Changes in Total Migration Values by Year (2018-2024)
+
+The changes in the total amount of migration over the years were shown graphically.
+
+```{r}
 grafik_verisi <- VerilenGoc[VerilenGoc[, 2] == "Toplam-Total", ]
 print(grafik_verisi)
 head(grafik_verisi)
@@ -99,13 +157,17 @@ ggplot(data = grafik_verisi, aes(x = yil, y = goc_miktari)) +
   geom_point(color = "darkred", size = 3) +
   geom_text(aes(label = round(goc_miktari, 1)), vjust = -0.5, size = 3.5) +
   labs(
-    title = "Yıllara Göre Toplam Verilen Göç Miktarı",
-    x = "Yıl",
-    y = "Göç Miktarı (x1.000)"
+    title = "Yillara Gore Toplam Verilen Goc Miktari",
+    x = "Yil",
+    y = "Goc Miktari (x1.000)"
   )
-  
-  
-# Ankara için Yıllara Göre Toplam Verilen Göç Miktarı
+```
+
+### 3.1.2. Changes in Total Migration Values by Year for Ankara Provience
+
+The graphic shows the changes in total migration amounts over the years for Ankara province.
+
+```{r}
 grafik_verisi <- VerilenGoc[VerilenGoc[, 2] == "Ankara", ]
 print(grafik_verisi)
 head(grafik_verisi)
@@ -119,14 +181,18 @@ ggplot(data = grafik_verisi, aes(x = yil, y = goc_miktari)) +
   geom_point(color = "darkred", size = 3) +
   geom_text(aes(label = round(goc_miktari, 1)), vjust = -0.5, size = 3.5) +
   labs(
-    title = "Ankara için Yıllara Göre Toplam Verilen Göç Miktarı",
-    x = "Yıl",
-    y = "Göç Miktarı (x1.000)"
+    title = "Ankara icin Yillara Gore Toplam Verilen Goc Miktari",
+    x = "Yil",
+    y = "Goc Miktari (x1.000)"
   )
-  
+```
 
-# 2024 yılı İllerin Alınan Göç Miktarları
-AlinanGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/AlinanGoc.xlsx",col_names = TRUE)
+### 3.1.3. Migration Figures by Province in 2024
+
+```{r}
+#| fig-height: 12
+#| fig-width: 8
+AlinanGoc  <- read_excel("C:/emu660-spring2026-burcubaris/AlinanGoc.xlsx",col_names = TRUE)
 
 colnames(AlinanGoc)[1:3] <- c("Yil", "Il", "Goc_Miktari")
 veri_2024 <- subset(AlinanGoc, Yil == 2024 & Il != "Toplam-Total")
@@ -138,13 +204,18 @@ ggplot(veri_2024, aes(x = Goc_Miktari_Bin, y = reorder(Il, Goc_Miktari_Bin))) +
   scale_fill_manual(values = c("coral", "skyblue"), guide = "none") +
   theme_minimal() +
   labs(
-    title = "2024 Yılı İllerin Alınan Göç Miktarları",
-    x = "Alınan Göç Miktarı (Bin Kişi)",
-    y = "İller"
+    title = "2024 Yilinda Illerin Aldigi Goc Miktarlari",
+    x = "Alinan Goc Miktari (Bin Kisi)",
+    y = "Iller"
   )
-  
-# 2024 yılı İllerin net Göç Miktarları
-NetGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx",col_names = TRUE)
+```
+
+### 3.1.4. Net Migration Figures of Provinces in 2024
+
+A graphical representation of the calculation made using the previously calculated data given migration-received migration data.
+
+```{r}
+NetGoc  <- read_excel("C:/emu660-spring2026-burcubaris/NetGoc.xlsx",col_names = TRUE)
 
 colnames(NetGoc)[1:3] <- c("Yil", "Il", "Goc_Miktari")
 veri_2024 <- subset(NetGoc, Yil == 2024 & Il != "Toplam-Total")
@@ -156,14 +227,18 @@ ggplot(veri_2024, aes(x = Goc_Miktari_Bin, y = reorder(Il, Goc_Miktari_Bin))) +
   scale_fill_manual(values = c("coral", "skyblue"), guide = "none") +
   theme_minimal() +
   labs(
-    title = "2024 Yılı İllerin NEt Göç Miktarları",
-    x = "Net Göç Miktarı (Bin Kişi)",
-    y = "İller"
+    title = "2024 Yilinda Illerin Net Goc Miktarlari",
+    x = "Net Goc Miktari (Bin Kisi)",
+    y = "Iller"
   )  
-  
-# göç nedenleri stacked halde gösterme
+```
 
-NetGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx",col_names = TRUE)
+### 3.1.5. Graph showing the distribution of migration reasons that make up net migration data.
+
+Migration reasons include: change of job, starting/finding a job, change of marital status/family-related reasons, better housing and living conditions, migration related to any member of the household/family, returning to family home/hometown, health/care, buying a house, retirement, other, and unknown.
+
+```{r}
+NetGoc  <- read_excel("C:/emu660-spring2026-burcubaris/NetGoc.xlsx",col_names = TRUE)
 
 goc_nedenleri <- c("Tayin/Is Degisikligi", "Ise Baslamak/Is Bulmak", "Egitim", 
                    "Medeni Durum/Ailevi", "Daha Iyi Konut/Yasam", "Haneye Bagimli Goc", 
@@ -185,11 +260,11 @@ goc_grafigi <- ggplot(veri_uzun, aes(x = Miktar_Bin, y = reorder(Il, Toplam_Goc)
   geom_col(position = "stack") +
   theme_minimal() +
   labs(
-    title = "2024 Yılı İllerin Göç Nedenlerine Göre Dağılımı",
-    subtitle = "Miktarlar bin kişi cinsinden ifade edilmiştir",
-    x = "Net Göç Miktarı (Bin Kişi)",
-    y = "İller",
-    fill = "Göç Nedenleri"
+    title = "2024 Illerin Goc Nedenlerine Gore Dagilimi",
+    subtitle = "Miktarlar bin kisi cinsinden ifade edilmistir",
+    x = "Net Goc Miktari (Bin Kisi)",
+    y = "Iller",
+    fill = "Goc Nedenleri"
   ) +
   theme(
     legend.position = "bottom",
@@ -199,15 +274,16 @@ goc_grafigi <- ggplot(veri_uzun, aes(x = Miktar_Bin, y = reorder(Il, Toplam_Goc)
   guides(fill = guide_legend(ncol = 3))
   
 print(goc_grafigi)
+```
 
 ## 3.2 Trend Analysis
 
-library(readxl)
-library(dplyr)
-library(ggplot2)
+The graph shows the relational analysis between migration rate data and life indices of the provinces.
 
-yasam_df <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/YasamEndeksi.xlsx", col_names = TRUE)
-goc_df <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/Gochizi.xlsx", col_names = TRUE)
+```{r}
+
+yasam_df <- read_excel("C:/emu660-spring2026-burcubaris/YasamEndeksi.xlsx", col_names = TRUE)
+goc_df <- read_excel("C:/emu660-spring2026-burcubaris/Gochizi.xlsx", col_names = TRUE)
 
 colnames(yasam_df)[1:2] <- c("Il", "Endeks")
 colnames(goc_df)[1:3]   <- c("Yil", "Il", "Goc")
@@ -215,26 +291,24 @@ colnames(goc_df)[1:3]   <- c("Yil", "Il", "Goc")
 goc_2024 <- subset(goc_df, Yil == 2024 & Il != "Toplam-Total")
 
 veri_seti <- inner_join(yasam_df, goc_2024, by = "Il")
-grafik <- ggplot(veri_seti, aes(x = Endeks, y = Goc)) +
+
+grafik <- ggplot(veri_seti, aes(x = Endeks, y = Goc, label = Il)) + 
   geom_point(color = "#1f77b4", size = 3, alpha = 0.7) + 
+  geom_text_repel(size = 3, max.overlaps = 15) + 
   geom_smooth(method = "lm", color = "red", se = TRUE, formula = y ~ x) + 
   labs(
-    title = "İl Yaşam Endeksi ve 2024 Net Göç Hızı İlişkisi",
-    x = "Genel Yaşam Endeksi",
-    y = "Net Göç Hızı (‰)"
+    title = "Il Yasam Endeksi ve 2024 Net Goc Hizi İliskisi",
+    x = "Genel Yasam Endeksi",
+    y = "Net Goc Hizi (‰)"
   ) +
   theme_minimal()
 
 print(grafik)
+```
+## 3.3 Results
 
-## 3.3 Model Fitting
+The graph shows the
 
-xxxxxx
+# 4 Results
 
-## 3.4 Results
-
-xxxxxx
-
-# 4. Results and Key Takeaways
-
-xxxxxx
+The graph shows the
