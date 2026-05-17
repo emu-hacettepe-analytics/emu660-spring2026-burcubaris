@@ -379,8 +379,8 @@ file.}\label{calculating-net-migration-rate-using-population-data-of-provinces-a
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{kaynak\_yolu }\OtherTok{\textless{}{-}} \StringTok{"C:/Users/Public/Documents/my\_repository\_emu660/emu660{-}spring2026{-}burcubaris/NetGoc.xlsx"}
-\NormalTok{hedef\_yolu  }\OtherTok{\textless{}{-}} \StringTok{"C:/Users/Public/Documents/my\_repository\_emu660/emu660{-}spring2026{-}burcubaris/IlNufuslarii.xlsx"}
+\NormalTok{kaynak\_yolu }\OtherTok{\textless{}{-}} \StringTok{"C:/emu660{-}spring2026{-}burcubaris/NetGoc.xlsx"}
+\NormalTok{hedef\_yolu  }\OtherTok{\textless{}{-}} \StringTok{"C:/emu660{-}spring2026{-}burcubaris/IlNufuslarii.xlsx"}
 
 \NormalTok{df\_kaynak }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(kaynak\_yolu, }\AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{)}
 
@@ -467,9 +467,9 @@ graphically.
   \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"darkred"}\NormalTok{, }\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{round}\NormalTok{(goc\_miktari, }\DecValTok{1}\NormalTok{)), }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{, }\AttributeTok{size =} \FloatTok{3.5}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{title =} \StringTok{"YD1llara GC6re Toplam Verilen GC6C\textquotesingle{} MiktarD1"}\NormalTok{,}
-    \AttributeTok{x =} \StringTok{"YD1l"}\NormalTok{,}
-    \AttributeTok{y =} \StringTok{"GC6C\textquotesingle{} MiktarD1 (x1.000)"}
+    \AttributeTok{title =} \StringTok{"Yillara Gore Toplam Verilen Goc Miktari"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Yil"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Goc Miktari (x1.000)"}
 \NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
@@ -546,9 +546,9 @@ for Ankara province.
   \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"darkred"}\NormalTok{, }\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{round}\NormalTok{(goc\_miktari, }\DecValTok{1}\NormalTok{)), }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{, }\AttributeTok{size =} \FloatTok{3.5}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{title =} \StringTok{"Ankara iC\textquotesingle{}in YD1llara GC6re Toplam Verilen GC6C\textquotesingle{} MiktarD1"}\NormalTok{,}
-    \AttributeTok{x =} \StringTok{"YD1l"}\NormalTok{,}
-    \AttributeTok{y =} \StringTok{"GC6C\textquotesingle{} MiktarD1 (x1.000)"}
+    \AttributeTok{title =} \StringTok{"Ankara icin Yillara Gore Toplam Verilen Goc Miktari"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Yil"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Goc Miktari (x1.000)"}
 \NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
@@ -560,7 +560,7 @@ for Ankara province.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{AlinanGoc  }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"C:/Users/Public/Documents/my\_repository\_emu660/emu660{-}spring2026{-}burcubaris/AlinanGoc.xlsx"}\NormalTok{,}\AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{AlinanGoc  }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"C:/emu660{-}spring2026{-}burcubaris/AlinanGoc.xlsx"}\NormalTok{,}\AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{)}
 
 \FunctionTok{colnames}\NormalTok{(AlinanGoc)[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Yil"}\NormalTok{, }\StringTok{"Il"}\NormalTok{, }\StringTok{"Goc\_Miktari"}\NormalTok{)}
 \NormalTok{veri\_2024 }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(AlinanGoc, Yil }\SpecialCharTok{==} \DecValTok{2024} \SpecialCharTok{\&}\NormalTok{ Il }\SpecialCharTok{!=} \StringTok{"Toplam{-}Total"}\NormalTok{)}
@@ -572,9 +572,9 @@ for Ankara province.
   \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"coral"}\NormalTok{, }\StringTok{"skyblue"}\NormalTok{), }\AttributeTok{guide =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{title =} \StringTok{"2024 YD1lD1 D0llerin AlD1nan GC6C\textquotesingle{} MiktarlarD1"}\NormalTok{,}
-    \AttributeTok{x =} \StringTok{"AlD1nan GC6C\textquotesingle{} MiktarD1 (Bin KiEi)"}\NormalTok{,}
-    \AttributeTok{y =} \StringTok{"D0ller"}
+    \AttributeTok{title =} \StringTok{"2024 Yilinda Illerin Aldigi Goc Miktarlari"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Alinan Goc Miktari (Bin Kisi)"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Iller"}
 \NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
@@ -589,7 +589,7 @@ calculated data given migration-received migration data.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{NetGoc  }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"C:/Users/Public/Documents/my\_repository\_emu660/emu660{-}spring2026{-}burcubaris/NetGoc.xlsx"}\NormalTok{,}\AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{NetGoc  }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"C:/emu660{-}spring2026{-}burcubaris/NetGoc.xlsx"}\NormalTok{,}\AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{)}
 
 \FunctionTok{colnames}\NormalTok{(NetGoc)[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Yil"}\NormalTok{, }\StringTok{"Il"}\NormalTok{, }\StringTok{"Goc\_Miktari"}\NormalTok{)}
 \NormalTok{veri\_2024 }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(NetGoc, Yil }\SpecialCharTok{==} \DecValTok{2024} \SpecialCharTok{\&}\NormalTok{ Il }\SpecialCharTok{!=} \StringTok{"Toplam{-}Total"}\NormalTok{)}
@@ -601,9 +601,9 @@ calculated data given migration-received migration data.
   \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"coral"}\NormalTok{, }\StringTok{"skyblue"}\NormalTok{), }\AttributeTok{guide =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{title =} \StringTok{"2024 YD1lD1 D0llerin NEt GC6C\textquotesingle{} MiktarlarD1"}\NormalTok{,}
-    \AttributeTok{x =} \StringTok{"Net GC6C\textquotesingle{} MiktarD1 (Bin KiEi)"}\NormalTok{,}
-    \AttributeTok{y =} \StringTok{"D0ller"}
+    \AttributeTok{title =} \StringTok{"2024 Yilinda Illerin Net Goc Miktarlari"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Net Goc Miktari (Bin Kisi)"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Iller"}
 \NormalTok{  )  }
 \end{Highlighting}
 \end{Shaded}
@@ -622,7 +622,7 @@ retirement, other, and unknown.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{NetGoc  }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"C:/Users/Public/Documents/my\_repository\_emu660/emu660{-}spring2026{-}burcubaris/NetGoc.xlsx"}\NormalTok{,}\AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{NetGoc  }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"C:/emu660{-}spring2026{-}burcubaris/NetGoc.xlsx"}\NormalTok{,}\AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{)}
 
 \NormalTok{goc\_nedenleri }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Tayin/Is Degisikligi"}\NormalTok{, }\StringTok{"Ise Baslamak/Is Bulmak"}\NormalTok{, }\StringTok{"Egitim"}\NormalTok{, }
                    \StringTok{"Medeni Durum/Ailevi"}\NormalTok{, }\StringTok{"Daha Iyi Konut/Yasam"}\NormalTok{, }\StringTok{"Haneye Bagimli Goc"}\NormalTok{, }
@@ -644,11 +644,11 @@ retirement, other, and unknown.
   \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{position =} \StringTok{"stack"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{title =} \StringTok{"2024 YD1lD1 D0llerin GC6C\textquotesingle{} Nedenlerine GC6re DaDD1lD1mD1"}\NormalTok{,}
-    \AttributeTok{subtitle =} \StringTok{"Miktarlar bin kiEi cinsinden ifade edilmiEtir"}\NormalTok{,}
-    \AttributeTok{x =} \StringTok{"Net GC6C\textquotesingle{} MiktarD1 (Bin KiEi)"}\NormalTok{,}
-    \AttributeTok{y =} \StringTok{"D0ller"}\NormalTok{,}
-    \AttributeTok{fill =} \StringTok{"GC6C\textquotesingle{} Nedenleri"}
+    \AttributeTok{title =} \StringTok{"2024 Illerin Goc Nedenlerine Gore Dagilimi"}\NormalTok{,}
+    \AttributeTok{subtitle =} \StringTok{"Miktarlar bin kisi cinsinden ifade edilmistir"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Net Goc Miktari (Bin Kisi)"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Iller"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"Goc Nedenleri"}
 \NormalTok{  ) }\SpecialCharTok{+}
   \FunctionTok{theme}\NormalTok{(}
     \AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{,}
@@ -668,26 +668,42 @@ retirement, other, and unknown.
 The graph shows the relational analysis between migration rate data and
 life indices of the provinces.
 
-```\{r\} yasam\_df \textless-
-read\_excel(``C:/Users/Public/Documents/my\_repository\_emu660/emu660-spring2026-burcubaris/YasamEndeksi.xlsx'',
-col\_names = TRUE) goc\_df \textless-
-read\_excel(``C:/Users/Public/Documents/my\_repository\_emu660/emu660-spring2026-burcubaris/Gochizi.xlsx'',
-col\_names = TRUE)
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{yasam\_df }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"C:/emu660{-}spring2026{-}burcubaris/YasamEndeksi.xlsx"}\NormalTok{, }\AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{goc\_df }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"C:/emu660{-}spring2026{-}burcubaris/Gochizi.xlsx"}\NormalTok{, }\AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{)}
 
-colnames(yasam\_df){[}1:2{]} \textless- c(``Il'', ``Endeks'')
-colnames(goc\_df){[}1:3{]} \textless- c(``Yil'', ``Il'', ``Goc'')
+\FunctionTok{colnames}\NormalTok{(yasam\_df)[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Il"}\NormalTok{, }\StringTok{"Endeks"}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(goc\_df)[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{]   }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Yil"}\NormalTok{, }\StringTok{"Il"}\NormalTok{, }\StringTok{"Goc"}\NormalTok{)}
 
-goc\_2024 \textless- subset(goc\_df, Yil == 2024 \& Il !=
-``Toplam-Total'')
+\NormalTok{goc\_2024 }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(goc\_df, Yil }\SpecialCharTok{==} \DecValTok{2024} \SpecialCharTok{\&}\NormalTok{ Il }\SpecialCharTok{!=} \StringTok{"Toplam{-}Total"}\NormalTok{)}
 
-veri\_seti \textless- inner\_join(yasam\_df, goc\_2024, by = ``Il'')
+\NormalTok{veri\_seti }\OtherTok{\textless{}{-}} \FunctionTok{inner\_join}\NormalTok{(yasam\_df, goc\_2024, }\AttributeTok{by =} \StringTok{"Il"}\NormalTok{)}
 
-grafik \textless- ggplot(veri\_seti, aes(x = Endeks, y = Goc, label =
-Il)) + geom\_point(color = ``\#1f77b4'', size = 3, alpha = 0.7) +
-geom\_text\_repel(size = 3, max.overlaps = 15) + geom\_smooth(method =
-``lm'', color = ``red'', se = TRUE, formula = y \textasciitilde{} x) +
-labs( title = ``D0l YaEam Endeksi ve 2024 Net GC6C' HD1zD1 D0liEkisi'',
-x = ``Genel Yasam Endeksi'', y = ``Net Goc Hizi (b
+\NormalTok{grafik }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(veri\_seti, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Endeks, }\AttributeTok{y =}\NormalTok{ Goc, }\AttributeTok{label =}\NormalTok{ Il)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#1f77b4"}\NormalTok{, }\AttributeTok{size =} \DecValTok{3}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_text\_repel}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{, }\AttributeTok{max.overlaps =} \DecValTok{15}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{formula =}\NormalTok{ y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Il Yasam Endeksi ve 2024 Net Goc Hizi İliskisi"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Genel Yasam Endeksi"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Net Goc Hizi (‰)"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\FunctionTok{print}\NormalTok{(grafik)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/unnamed-chunk-9-1.pdf}}
+
+\subsection{3.3 Results}\label{results}
+
+The graph shows the
+
+\section{4 Results}\label{results-1}
+
+The graph shows the
 
 
 
