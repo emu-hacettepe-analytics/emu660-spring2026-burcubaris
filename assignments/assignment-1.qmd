@@ -2,7 +2,7 @@
 title: "Assignment 1"
 ---
 
-My first assignment has two parts.
+My first assignment has three parts.
 
 ## (a) A brief summary about “Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu & Erdi Daşdemir” video:
 
@@ -10,7 +10,7 @@ Our lecturer Dr. Erdi Daşdemir’s guest Baykal Hafızoğlu talks about operati
 
 Mr. Hafızoğlu notes that the traditional definition of OR has changed a lot over the past few years. He argues that while it used to be related to optimization and statistics, it is now more closely associated with artificial intelligence and machine learning. For this reason, Mr. Hafızoğlu prefers to refer OR as an “analytics”. He categorizes analytics into four topic and shows these topics as a graphic: Descriptive, Diagnostic, Predictive  and Prescriptive analytics.
 
-Later in his speech, he talks about his own experiences. First, he says, “All projects begin with a clear problem definition.” He explains that the problem definition must be clear and concise, even when dealing with the simplest of matters. This is the most important thing.
+Later in his speech, he talks about his own experiences. He says, “All projects begin with a clear problem definition.” He explains that the problem definition must be clear and concise, even when dealing with the simplest of matters. This is the most important thing.
 
 Mr. Hafızoğlu notes that one of the most important things is to truly understand the user. An early-stage prototype should be presented to the customer without delay, and feedback should be gathered. The user should not struggle to understand the user interface. It is really important that users understand and adopt the model they will be using. This is because users do not want to use models they do not understand. Therefore, we must be able to explain the analytical model we have created.
 
@@ -128,6 +128,21 @@ head(na_counts, 8)
 
 ```{r}
 new_data <- data
+
+for(i in seq_along(new_data)) {
+
+  if(is.numeric(new_data[[i]])) {
+
+    new_data[[i]][is.na(new_data[[i]])] <- my_birth_year + k
+
+  } else {
+
+    new_data[[i]] <- as.character(new_data[[i]])
+    new_data[[i]][is.na(new_data[[i]])] <- paste0(my_first,"_",k)
+
+  }
+
+}
 ```
 
 ```{r}
@@ -143,7 +158,7 @@ new_data[num_cols] <- lapply(new_data[num_cols], function(x) {
 ```
 
 ```{r}
-char_cols <- sapply(new_data, function(x) is.character(x) | is.factor(x))
+char_cols <- sapply(new_data, is.character)
 
 new_data[char_cols] <- lapply(new_data[char_cols], function(x) {
   

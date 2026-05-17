@@ -2,7 +2,7 @@
 title: "Project X"
 ---
 
-Welcome to my/our project page.
+Welcome to our project page.
 
 Keep an eye on this space to stay updated with my project activities.
 
@@ -10,11 +10,23 @@ Keep an eye on this space to stay updated with my project activities.
 
 # 1. Project Overview and Scope
 
-xxxxxx
+Göç, yalnızca bireylerin coğrafi yer değiştirmesi değil; ekonomik arayışların, sosyal imkanların ve yapısal kalitenin bir bölgedeki izdüşümüdür. Türkiye’de iller arasındaki gelişmişlik ve yaşam standartları farkı, iç göç hareketlerinin en birincil dinamiklerinden birini oluşturmaktadır.
+Bu projede, TÜİK verilerini kullanarak Türkiye'nin 81 ilinin Net Göç (Net Göç = Göç Veren - Göç Alan) rakamları ile İllerde Yaşam Endeksi (Yaşanabilirlik) göstergeleri arasındaki çok boyutlu ilişkiyi analitik yöntemlerle incelemeyi hedefliyoruz. Amacımız, insanların hangi yaşamsal faktörleri (ekonomi, eğitim, sağlık, çevre kalitesi, güvenlik vb.) nedeniyle mevcut şehirlerini terk ettiğini veya belirli şehirlere yöneldiğini veri analitiği ve istatistiksel modellerle ortaya koymaktır. Bu çalışma, bölgesel kalkınma politikaları ve kentsel planlama kararları için veri odaklı bir projeksiyon sunması açısından önemli bir karar destek mekanizması niteliğindedir diyebiliriz.
+
+Projenin Temel Amaçları
+Göç Profillerinin Çıkarılması: Türkiye'deki "Net Göç Şampiyonları" (en çok net göç alan) ve "Göç Kaynakları" (en çok net göç veren) illeri tespit etmek ve bunları coğrafi olarak haritalandırmak.
+Yaşanabilirlik Boyutlarının Etkisi: Yaşam endeksini oluşturan alt kırılımlardan (Gelir ve Servet, Sağlık, Eğitim, Çevre, Güvenlik vb.) elde edilen genel endeksin göç kararı üzerindeki etkisini araştırmak.
 
 # 2. Data
 
-xxxxxx
+#veri seti, veri kümenizi açıklayın. Herhangi bir tam analiz yapmanız veya sonuç çıkarmanız gerekmemekle birlikte, verilere kapsamlı bir genel bakış sunmayı hedefleyin—sütunların ne anlama geldiğini, değerlerin nasıl dağıldığını açıklayın ve potansiyel analizler hakkında fikirlerinizi paylaşın. Özlü tutun, bazı grafikler ekleyebilirsiniz.
+
+6.  
+
+1. İllerin yıllara sari popülasyon değeri
+2. Göç etme nedenlerine göre illerin aldığı göç miktarı
+3. Göç etme nedenlerine göre illerin verdiği göç miktarı
+4. Göç etme nedenlerine göre illerin net göç miktarı
 
 ## 2.1 Data Source
 
@@ -30,7 +42,42 @@ xxxxxx
 
 ## 2.4 Preprocessing
 
-xxxxxx
+#Farklı excel verilerinde yer alan İllerin aldığı ve Verdiği Göç Değerlerinden Net Göç Hesaplanması ve verilerdeki char formatında yazılan boşluklu değerlerin numaric değerler olarak güncellenmesi işlemleri uygulanmıştır.
+
+#install.packages("ggplot2") 
+#install.packages("dplyr")  
+#install.packages("readxl")
+#install.packages("writexl")
+#install.packages("forcats")
+#install.packages("tidyr")
+#install.packages("tidyverse")
+library(tidyverse)
+library(readxl) 
+library(writexl) 
+
+
+
+# Net göç bilgisi hesaplama ve excel dosyası oluşturma
+
+VerilenGoc <- read_excel("C:/Users/Public/Documents/my_repository_emu660/emu660-spring2026-burcubaris/VerilenGoc.xlsx", col_names = TRUE)
+AlinanGoc  <- read_excel("C:/Users/Public/Documents/my_repository_emu660/emu660-spring2026-burcubaris/AlinanGoc.xlsx", col_names = TRUE)
+toplam_sutun <- ncol(VerilenGoc)
+fark_df <- VerilenGoc 
+for (i in 3:toplam_sutun) {
+  v_clean <- as.character(VerilenGoc[[i]])
+  v_clean <- str_replace_all(v_clean, "\\s", "") # Tüm boşlukları siler 
+  VerilenGoc[[i]] <- as.numeric(v_clean)         # R içinde Double formatına zorla
+  a_clean <- as.character(AlinanGoc[[i]])
+  a_clean <- str_replace_all(a_clean, "\\s", "")    
+  AlinanGoc[[i]] <- as.numeric(a_clean)
+}
+fark_df[, 3:toplam_sutun] <- VerilenGoc[, 3:toplam_sutun] - AlinanGoc[, 3:toplam_sutun]
+for (i in 3:toplam_sutun) {
+  fark_df[[i]] <- as.numeric(fark_df[[i]])
+}
+write_xlsx(fark_df, "C:/Users/Public/Documents/my_repository_emu660/emu660-spring2026-burcubaris/NetGoc.xlsx")
+
+print(VerilenGoc[, 3:toplam_sutun])
 
 # 3. Analysis
 
@@ -38,11 +85,147 @@ xxxxxx
 
 ## 3.1 Exploratory Data Analysis
 
-xxxxxx
+# Yıllara göre Toplam Verilen Göç Miktarı Değişimi
+grafik_verisi <- VerilenGoc[VerilenGoc[, 2] == "Toplam-Total", ]
+print(grafik_verisi)
+head(grafik_verisi)
+
+yil <- factor(grafik_verisi[[1]], levels = sort(unique(grafik_verisi[[1]]), decreasing = TRUE))
+goc_miktari  <- as.numeric(grafik_verisi[[3]])/1000  
+
+ggplot(data = grafik_verisi, aes(x = yil, y = goc_miktari)) +
+  geom_col(fill = "steelblue", alpha = 0.7) + 
+  geom_line(color = "black", size = 2) + 
+  geom_point(color = "darkred", size = 3) +
+  geom_text(aes(label = round(goc_miktari, 1)), vjust = -0.5, size = 3.5) +
+  labs(
+    title = "Yıllara Göre Toplam Verilen Göç Miktarı",
+    x = "Yıl",
+    y = "Göç Miktarı (x1.000)"
+  )
+  
+  
+# Ankara için Yıllara Göre Toplam Verilen Göç Miktarı
+grafik_verisi <- VerilenGoc[VerilenGoc[, 2] == "Ankara", ]
+print(grafik_verisi)
+head(grafik_verisi)
+
+yil <- factor(grafik_verisi[[1]], levels = sort(unique(grafik_verisi[[1]]), decreasing = TRUE))
+goc_miktari  <- as.numeric(grafik_verisi[[3]])/1000  
+
+ggplot(data = grafik_verisi, aes(x = yil, y = goc_miktari)) +
+  geom_col(fill = "steelblue", alpha = 0.7) + 
+  geom_line(color = "black", size = 2) + 
+  geom_point(color = "darkred", size = 3) +
+  geom_text(aes(label = round(goc_miktari, 1)), vjust = -0.5, size = 3.5) +
+  labs(
+    title = "Ankara için Yıllara Göre Toplam Verilen Göç Miktarı",
+    x = "Yıl",
+    y = "Göç Miktarı (x1.000)"
+  )
+  
+
+# 2024 yılı İllerin Alınan Göç Miktarları
+AlinanGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/AlinanGoc.xlsx",col_names = TRUE)
+
+colnames(AlinanGoc)[1:3] <- c("Yil", "Il", "Goc_Miktari")
+veri_2024 <- subset(AlinanGoc, Yil == 2024 & Il != "Toplam-Total")
+veri_2024$Goc_Miktari_Bin <- veri_2024$Goc_Miktari / 1000
+
+
+ggplot(veri_2024, aes(x = Goc_Miktari_Bin, y = reorder(Il, Goc_Miktari_Bin))) +
+  geom_col(aes(fill = Goc_Miktari_Bin > 0)) +
+  scale_fill_manual(values = c("coral", "skyblue"), guide = "none") +
+  theme_minimal() +
+  labs(
+    title = "2024 Yılı İllerin Alınan Göç Miktarları",
+    x = "Alınan Göç Miktarı (Bin Kişi)",
+    y = "İller"
+  )
+  
+# 2024 yılı İllerin net Göç Miktarları
+NetGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx",col_names = TRUE)
+
+colnames(NetGoc)[1:3] <- c("Yil", "Il", "Goc_Miktari")
+veri_2024 <- subset(NetGoc, Yil == 2024 & Il != "Toplam-Total")
+veri_2024$Goc_Miktari_Bin <- veri_2024$Goc_Miktari / 1000
+
+
+ggplot(veri_2024, aes(x = Goc_Miktari_Bin, y = reorder(Il, Goc_Miktari_Bin))) +
+  geom_col(aes(fill = Goc_Miktari_Bin > 0)) +
+  scale_fill_manual(values = c("coral", "skyblue"), guide = "none") +
+  theme_minimal() +
+  labs(
+    title = "2024 Yılı İllerin NEt Göç Miktarları",
+    x = "Net Göç Miktarı (Bin Kişi)",
+    y = "İller"
+  )  
+  
+# göç nedenleri stacked halde gösterme
+
+NetGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx",col_names = TRUE)
+
+goc_nedenleri <- c("Tayin/Is Degisikligi", "Ise Baslamak/Is Bulmak", "Egitim", 
+                   "Medeni Durum/Ailevi", "Daha Iyi Konut/Yasam", "Haneye Bagimli Goc", 
+                   "Memlekete Donus", "Saglik/Bakim", "Ev Alinmasi", 
+                   "Emeklilik", "Diger", "Bilinmeyen")
+
+colnames(NetGoc)[1:3] <- c("Yil", "Il", "Toplam_Goc")
+colnames(NetGoc)[4:15] <- goc_nedenleri
+veri_2024 <- subset(NetGoc, Yil == 2024 & Il != "Toplam-Total")
+
+veri_uzun <- pivot_longer(veri_2024, 
+                          cols = 4:15, 
+                          names_to = "Goc_Nedeni", 
+                          values_to = "Miktar")
+
+veri_uzun$Miktar_Bin <- veri_uzun$Miktar / 1000
+
+goc_grafigi <- ggplot(veri_uzun, aes(x = Miktar_Bin, y = reorder(Il, Toplam_Goc), fill = Goc_Nedeni)) +
+  geom_col(position = "stack") +
+  theme_minimal() +
+  labs(
+    title = "2024 Yılı İllerin Göç Nedenlerine Göre Dağılımı",
+    subtitle = "Miktarlar bin kişi cinsinden ifade edilmiştir",
+    x = "Net Göç Miktarı (Bin Kişi)",
+    y = "İller",
+    fill = "Göç Nedenleri"
+  ) +
+  theme(
+    legend.position = "bottom",
+    legend.text = element_text(size = 8),
+    axis.text.y = element_text(size = 7)
+  ) +
+  guides(fill = guide_legend(ncol = 3))
+  
+print(goc_grafigi)
 
 ## 3.2 Trend Analysis
 
-xxxxxx
+library(readxl)
+library(dplyr)
+library(ggplot2)
+
+yasam_df <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/YasamEndeksi.xlsx", col_names = TRUE)
+goc_df <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/Gochizi.xlsx", col_names = TRUE)
+
+colnames(yasam_df)[1:2] <- c("Il", "Endeks")
+colnames(goc_df)[1:3]   <- c("Yil", "Il", "Goc")
+
+goc_2024 <- subset(goc_df, Yil == 2024 & Il != "Toplam-Total")
+
+veri_seti <- inner_join(yasam_df, goc_2024, by = "Il")
+grafik <- ggplot(veri_seti, aes(x = Endeks, y = Goc)) +
+  geom_point(color = "#1f77b4", size = 3, alpha = 0.7) + 
+  geom_smooth(method = "lm", color = "red", se = TRUE, formula = y ~ x) + 
+  labs(
+    title = "İl Yaşam Endeksi ve 2024 Net Göç Hızı İlişkisi",
+    x = "Genel Yaşam Endeksi",
+    y = "Net Göç Hızı (‰)"
+  ) +
+  theme_minimal()
+
+print(grafik)
 
 ## 3.3 Model Fitting
 

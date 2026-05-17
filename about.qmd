@@ -8,7 +8,7 @@ sidebar: false
 # Education
 
 -   B.S., Dokuz Eylül University, Turkey, 2008-2013
-
+-   B.S.(Erasmus), Vienna University of Technology, Austria, 2011-2012
 -   M.S., Industrial Engineering, Hacettepe University, Turkey, 2025 - ongoing.
 
 # Work Experience
