@@ -462,8 +462,8 @@ print(grafik)
 ```
 ## 3.3 Results
 
-The graph shows the
+When we examine the graph, we see a positive correlation between the overall quality of life index and the net migration rate. It has been observed that provinces with a high quality of life index tend to attract more migration, while those with a low index tend to lose population.
 
 # 4 Results and Key Takeaways
 
-The graph shows the
+Developed provinces such as Istanbul, Ankara, Antalya, and Muğla have a positive net migration rate, while provinces such as Ağrı, Muş, Şırnak, and Kars stand out with negative net migration rates. However, the fact that the data points do not cluster entirely around the regression line indicates that migration patterns cannot be explained solely by the quality of life index and that other economic, social, and demographic factors also play a role.
