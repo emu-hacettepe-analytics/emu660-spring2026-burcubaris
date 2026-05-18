@@ -264,7 +264,7 @@ ggplot(neden_verisi_2024, aes(x = Kisi_Sayisi_Bin, y = reorder(Goc_Nedeni, Kisi_
   )
 ```  
   
-En güncel 2024 baz alırsak göç etmenin en büyük nedenlerinin aile fertlerinden birine bağımlı göç ile daha iyi yaşam koşulları ve eğitim olduğunu görürüz. 2024 yılı için en yüksek çıkan değer aslında bize Türkiye'de yaşayan toplumun aile odaklı olduğunu gösterir ki bu sürpriz değildir.İkinci olarak ise insanların daha iyi yaşam koşulları için yoğun bir şekilde yer değiştirdiğini görüyoruz.Üçüncü sırada çıkan eğitimde ise üniversite ve okul faktörünün yine Türkiye'de iç göçün temellerinden olmaya devam ettiğini görüyoruz.
+If we look at the most recent data from 2024, we see that the main reasons for migration are family-based migration and the pursuit of better living conditions and education. The highest value for 2024 actually shows us that the population living in Turkey is family-oriented, which is not surprising. Second, we see that people are relocating in large numbers in search of better living conditions. Third, regarding education, we see that the factors of university and school continue to be among the foundations of internal migration in Turkiye.
 
 
 ### 2.4.2. Calculating net migration rate using population data of provinces and creating an Excel file.
@@ -311,7 +311,7 @@ ggplot(data = grafik_verisi, aes(x = yil, y = goc_miktari)) +
   )
 ```
 
-2018-2024 yılları arasındaki göç hareketini inceleyecek olursak en düşük yılın 2020 pandemi senesinin olduğunu görüyoruz. O dönemde sokağa çıkma yasakları ve belirsizliğin hakim olması insanların yaşadıkları şehirden göç etmelerine engel olmuş olabilir diyebiliriz. En yüksek artışın ise 2023 yılında olduğunu görüyoruz ki Şubat 2023'te Kahramanmaraş depremi meydana gelmiş ve insanlar deprem riskinin az olduğu, daha güvenli şehirlere göç etmeye başlamışlardır. 2018 yılında da nispeten yüksek bir göç hareketi görüyoruz. O dönemde Türkiye'de ekonomik kriz ve enflasyon etkisiyle özellikle pahalı olan Ankara ve İstanbul gibi metropol şehirlerden daha küçük şehirlere göç hareketinin olduğunu söyleyebiliriz.
+If we examine migration trends between 2018 and 2024, we see that the lowest figure was recorded in 2020, the year of the pandemic. We can say that the curfews and prevailing uncertainty during that period may have prevented people from moving away from the cities where they lived. We also see that the highest increase occurred in 2023, as the Kahramanmaras earthquake struck in February 2023, prompting people to begin migrating to safer cities with lower earthquake risks. We also see a relatively high migration trend in 2018. During that period, due to the economic crisis and inflation in Turkiye, there was a migration trend from expensive metropolitan cities like Ankara and Istanbul to smaller cities.
 
 ### 3.1.2. Changes in Total Migration Values by Year for Ankara Provience
 
@@ -462,8 +462,11 @@ print(grafik)
 ```
 ## 3.3 Results
 
-When we examine the graph, we see a positive correlation between the overall quality of life index and the net migration rate. It has been observed that provinces with a high quality of life index tend to attract more migration, while those with a low index tend to lose population.
+When we examine the graph, we see a positive correlation between the overall quality of life index and the net migration rate. It has been observed that provinces with a high quality of life index tend to attract more migration, while those with a low index tend to lose population. Developed provinces such as Istanbul, Ankara, Antalya, and Muğla have a positive net migration rate, while provinces such as Ağrı, Muş, Şırnak, and Kars stand out with negative net migration rates. However, the fact that the data points do not cluster entirely around the regression line indicates that migration patterns cannot be explained solely by the quality of life index and that other economic, social, and demographic factors also play a role.
 
 # 4 Results and Key Takeaways
 
-Developed provinces such as Istanbul, Ankara, Antalya, and Muğla have a positive net migration rate, while provinces such as Ağrı, Muş, Şırnak, and Kars stand out with negative net migration rates. However, the fact that the data points do not cluster entirely around the regression line indicates that migration patterns cannot be explained solely by the quality of life index and that other economic, social, and demographic factors also play a role.
+One of the project’s most significant findings was that migration decisions in Turkey are largely influenced by factors related to family and quality of life. According to the 2024 analysis of migration reasons, dependence on family and the search for better housing and living conditions were among the most significant driving forces behind migration. Education-related reasons also remained one of the most consistent motivations for migration throughout the 2018–2024 period, indicating that universities and educational opportunities significantly influence internal migration decisions.
+
+Overall, the project demonstrates that internal migration in Turkey reflects regional disparities in development, the distribution of opportunities, and quality of life. Based on our findings, we believe that balanced regional development policies, investments in education and employment opportunities, and improvements to social infrastructure in underdeveloped provinces are essential for reducing forced migration and regional disparities.
+
